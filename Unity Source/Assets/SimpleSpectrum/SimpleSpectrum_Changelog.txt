@@ -1,0 +1,22 @@
+== SimpleSpectrum() ==
+CHANGELOG
+
+
+-v1.1-
+	- The Spectrum class has been renamed to SimpleSpectrum.
+
+	- New properties colorAttackDamp and colorDecayDamp have been added to SimpleSpectrum and OutputVolume.
+	  These allow for smoother changes of bar colour.
+
+	- A 'channel' property has been added to OutputVolume and 'channelUsed' to OutputVolume.GetRMS to specify audio channel of output volume.
+
+	- SimpleSpectrum.isEnabled has been made visible in the custom inspector view.
+
+	- More presets have been added and can be found in Assets/SimpleSpectrum/Presets.
+
+	- Various bug fixes & optimisations.
+
+
+-v1.0-
+
+Initial release

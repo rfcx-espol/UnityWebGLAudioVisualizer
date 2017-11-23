@@ -1,0 +1,225 @@
+== SimpleSpectrum() ==
+v1.1
+
+Thanks for downloading SimpleSpectrum!
+
+--WHAT'S NEW IN v1.1--
+
+- The Spectrum class has been renamed to SimpleSpectrum. It just makes sense.
+
+- New properties colorAttackDamp and colorDecayDamp have been added to SimpleSpectrum and OutputVolume.
+  These allow for smoother changes of bar colour.
+
+- A 'channel' property has been added to OutputVolume and 'channelUsed' to OutputVolume.GetRMS to specify audio channel of output volume.
+
+- SimpleSpectrum.isEnabled has been made visible in the custom inspector view.
+
+- More presets have been added and can be found in Assets/SimpleSpectrum/Presets.
+
+- Various bug fixes & optimisations.
+
+
+--QUICK SETUP--
+
+1) Create an empty GameObject.
+
+2) Add the SimpleSpectrum component.
+
+3) Specify the AudioSource to use.
+
+Done!
+
+--CLASSES / COMPONENTS--
+
+SimpleSpectrum:
+	This Component handles AudioSource (or AudioListener) spectrum data and creates visual specturms.
+	Using an instance of this class will automatically create a spectrum using the specified prefab.
+	However, it also contains a static method to generate a logarithmically scaled float array of spectrum data for you to use how you wish.
+
+	Required properties for functionality: AudioSource, barPrefab.
+	
+	Properties:
+	
+		bool isEnabled: Enables or disables the processing and display of spectrum data. 
+		
+		-SAMPLING-
+
+		AudioSource audioSource:		The AudioSource to take data from. Can be null if useListenerInstead is true.
+		
+		bool useListenerInstead:		If true, take audio data from the AudioListener instead.
+		
+		int sampleChannel:				The audio channel to use when sampling.
+
+		int numSamples:					The number of samples to use when sampling. Must be a power of two.
+		
+		FFTWindow windowUsed: 			The FFTWindow to use when sampling.
+		
+		bool useLogarithmicFrequency:	If true, audio data is scaled logarithmically.		
+		
+		bool multiplyByFrequency:		If true, the values of the spectrum are multiplied based on their frequency, to keep the values proportionate.
+		
+		float highFrequencyTrim:		Determines what percentage of the full frequency range to use.
+										(1 being the full range, reducing the value towards 0 cuts off high frequencies)
+										This can be useful when using MP3 files or audio with missing high frequencies.
+
+		float linearSampleStretch:		When useLogarithmicFrequency is false, this value stretches the spectrum data onto the bars.
+		
+		-BARS-
+		
+		int barAmount: 					The amount of bars to use.
+		
+		float barYScale:				Stretches the values of the bars.
+		
+		float barMinYScale:				Sets a minimum scale for the bars; they will never go below this scale.
+										This value is also used when isEnabled is false.
+		
+		GameObject barPrefab:			The prefab of bar to use when building.
+										See below for how to use custom prefabs.
+		
+		float barXScale:				Stretches the bars sideways. 
+		
+		float barXSpacing:				Increases the spacing between bars.
+		
+		float barCurveAngle:			Bends the Spectrum using a given angle.
+		
+		float barXRotation:				Rotates the Spectrum inwards or outwards.
+										Especially useful when using barCurveAngle.
+		
+		float attackDamp:				The amount of dampening used when the new scale is higher than the bar's existing scale.
+										Must be between 0 (slowest) and 1 (fastest).
+		
+		float decayDamp:				The amount of dampening used when the new scale is lower than the bar's existing scale.
+										Must be between 0 (slowest) and 1 (fastest).
+		
+		-COLOR-
+		
+		bool useColorGradient:			Determines whether to apply a color gradient on the bars, or just use colorMin as a solid color.
+		
+		Color colorMin:					The minimum (low value) color if useColorGradient is true, else the solid color to use.
+		
+		Color colorMax:					The maximum (high value) color if useColorGradient is true.
+		
+		AnimationCurve colorValueCurve:	The curve that determines the interpolation between colorMin and colorMax.
+
+		float colorAttackDamp			The amount of dampening used when the new color value is higher than the existing color value.
+										Must be between 0 (slowest) and 1 (fastest).	
+
+		float colorDecayDamp			The amount of dampening used when the new color value is lower than the existing color value.
+										Must be between 0 (slowest) and 1 (fastest).
+		
+	Methods:
+	
+		public void RebuildSpectrum:
+			Destroys the existing spectrum and rebuilds this instance. Can be called in Play mode to apply programmatic changes.
+			
+		public static float[] GetLogarithmicSpectrumData:
+			Returns a logarithmically scaled and proportionate array of spectrum data from the AudioSource.
+			
+			Parameters:
+				AudioSource source:		The AudioSource to take data from.
+				
+				int spectrumSize:		The size of the returned array.
+				
+				int sampleSize:			The size of sample to take from the AudioSource. Must be a power of two.
+				
+				FFTWindow windowUsed:	The FFTWindow to use when taking audio samples. Default: FFTWindow.BlackmanHarris
+				
+				int channelUsed:		The channel to take audio from. Default: 0 (Left)
+	
+	
+	Note: While in the editor, editing some features (i.e. curving, scaling) can be visualised in real-time. For performance reasons, this feature is disabled in builds.
+	If you wish to enable this feature in builds, remove the '#if UNITY_EDITOR' conditions SimpleSpectrum.Update().
+	
+	
+OutputVolume:
+	This Component handles AudioSource output data and creates a visual volume meter.
+	Using an instance of this class will automatically create a volume meter using the specified prefab.
+	However, it also contains a static method to return the current volume of an AudioSource that you can use how you wish.
+	
+	Required properties for functionality: AudioSource, prefab.
+	
+	Properties:
+		GameObject prefab:			The prefab of bar to use when building.
+									See below for how to use custom prefabs.
+		
+		int sampleAmount:			The number of samples to use when sampling. Must be a power of two.
+
+		AudioSource audioSource:	The AudioSource to take data from.	
+		
+		int channel:				The audio channel to take data from.
+
+		float attackDamp:			The amount of dampening used when the new scale is higher than the bar's existing scale.
+									Must be between 0 (slowest) and 1 (fastest).
+		
+		float decayDamp:			The amount of dampening used when the new scale is lower than the bar's existing scale.
+									Must be between 0 (slowest) and 1 (fastest).
+		
+		Color minColor:				The minimum (low value) color.
+		
+		Color maxColor:				The maximum (high value) color.
+		
+		AnimationCurve colorCurve:	The curve that determines the interpolation between colorMin and colorMax.
+
+		float colorAttackDamp		The amount of dampening used when the new color value is higher than the existing color value.
+									Must be between 0 (slowest) and 1 (fastest).	
+
+		float colorDecayDamp		The amount of dampening used when the new color value is lower than the existing color value.
+									Must be between 0 (slowest) and 1 (fastest).
+	
+	Methods:
+	
+		public static float GetRMS:
+			Returns the current output volume of the AudioSource, using the RMS method.
+			
+			Parameters:
+				AudioSource aSource:	The AudioSource to reference.
+
+				int sampleSize:			The number of samples to take, as a power of two.
+										Higher values mean more precise volume.
+
+				int channelUsed:		The channel to take data from. Default: 0 (Left)
+
+			Note: The RMS of audio data is an average of the sound amplitude.
+			While it may be assumed that the maximum output value is 0.5 (equivalent to 0dB), lounder sounds will exceed this value. 
+			You may wish to clamp the output value of GetRMS between 0 and 0.5.
+
+
+--PREFABS--
+
+SimpleSpectrum comes with numerous prefabs to quickly get started.
+
+SpectrumOrigin:	A premade instance of the Spectrum Component.
+
+OutputVolume:	A premade instance of the OutputVolume Component.
+
+Bar Prefabs:
+	Any of these prefabs can be used as the barPrefab of Spectrum or prefab of OutputVolume.
+	
+	Bottom:			Scales from the bottom of the bar (upwards).
+	
+	Middle:			Scales from the middle of the bar (both directions).
+	
+	Lower:			Scales from the lower region of the bar (80% upwards, 20% downwards).
+	
+	SpriteBottom:	Sprite equivalent of Bottom.
+	
+	SpriteMidle:	Sprite equivalent of Middle.
+	
+	SpriteLower:	Sprite equivalent of Lower.
+	
+
+	-TO CREATE YOUR OWN BAR PREFAB-
+	
+	Custom Bar prefabs are straightforward to make. Your prefab must:
+		1) Have the actual bar as the child, with it having position offset of your choosing.
+		   This is to allow scaling with offsets.
+		   
+		2) The child must have a Component that inherits from Renderer.
+		   (i.e. MeshRenderer, SpriteRenderer)
+		   
+		3) The renderer must use either the lightweightGradientLerp or lightweightGradientLerpSprite.
+		
+			3a) Alternatively, if you wish to use your own shader, it must contain the values:
+				Color _Color1, Color _Color2, Float _Val
+
+				

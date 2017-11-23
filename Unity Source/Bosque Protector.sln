@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bosque Protector", "Bosque Protector.csproj", "{9C960AB0-6BB0-2D92-8A1D-966D2B4F9C25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bosque Protector.Editor", "Bosque Protector.Editor.csproj", "{545F9C4F-83DE-4B60-E49C-B26C702B1128}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C960AB0-6BB0-2D92-8A1D-966D2B4F9C25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C960AB0-6BB0-2D92-8A1D-966D2B4F9C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C960AB0-6BB0-2D92-8A1D-966D2B4F9C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C960AB0-6BB0-2D92-8A1D-966D2B4F9C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545F9C4F-83DE-4B60-E49C-B26C702B1128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545F9C4F-83DE-4B60-E49C-B26C702B1128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545F9C4F-83DE-4B60-E49C-B26C702B1128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545F9C4F-83DE-4B60-E49C-B26C702B1128}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
