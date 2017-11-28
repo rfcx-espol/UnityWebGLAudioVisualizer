@@ -50,13 +50,14 @@ public class BrowserCommunication : MonoBehaviour {
         //BindWebGLTexture(texture.GetNativeTextureID());
     }
 
-    void Update()
-    {
-        PrintFloatArray(myArray, myArray.Length);
-    }
+    //void Update()
+    //{
+        
+    //}
 
     public float[] GetSamples()
     {
+        PrintFloatArray(myArray, myArray.Length);
         return myArray;
     }
 }
