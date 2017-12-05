@@ -151,7 +151,7 @@ Visualizer.prototype = {
         this._updateInfo('Playing ' + this.fileName, false);
         this.info = 'Playing ' + this.fileName;
         document.getElementById('fileWrapper').style.opacity = 0.2;
-        this._drawSpectrum(analyser);
+		this._drawSpectrum(analyser);
     },
     _drawSpectrum: function(analyser) {
         var that = this,
@@ -206,7 +206,11 @@ Visualizer.prototype = {
                 ctx.fillRect(i * 12 /*meterWidth+gap*/ , cheight - value + capHeight, meterWidth, cheight); //the meter
             }
             that.animationId = requestAnimationFrame(drawMeter);
-            pedro = array;
+			
+			analyser.fftSize = 1024;
+			var dataArray = new Float32Array(analyser.fftSize);
+			analyser.getFloatTimeDomainData(dataArray);
+			pedro = dataArray;
         }
         this.animationId = requestAnimationFrame(drawMeter);
     },
