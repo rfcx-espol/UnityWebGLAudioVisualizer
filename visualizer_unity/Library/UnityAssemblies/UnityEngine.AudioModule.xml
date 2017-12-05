@@ -9,6 +9,7 @@
         <para>An implementation of IPlayable that controls an AudioClip.</para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="M:UnityEngine.Audio.AudioClipPlayable.Create(UnityEngine.Playables.PlayableGraph,UnityEngine.AudioClip,System.Boolean)">
       <summary>
         <para>Creates an AudioClipPlayable in the PlayableGraph.</para>
@@ -20,6 +21,8 @@
         <para>A AudioClipPlayable linked to the PlayableGraph.</para>
       </returns>
     </member>
+=======
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="T:UnityEngine.Audio.AudioMixer">
       <summary>
         <para>AudioMixer asset.</para>
@@ -131,6 +134,7 @@
         <para>A IPlayableOutput implementation that will be used to play audio.</para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="M:UnityEngine.Audio.AudioPlayableOutput.Create(UnityEngine.Playables.PlayableGraph,System.String,UnityEngine.AudioSource)">
       <summary>
         <para>Creates an AudioPlayableOutput in the PlayableGraph.</para>
@@ -142,6 +146,8 @@
         <para>A new AudioPlayableOutput attached to the PlayableGraph.</para>
       </returns>
     </member>
+=======
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="P:UnityEngine.Audio.AudioPlayableOutput.Null">
       <summary>
         <para>Returns an invalid AudioPlayableOutput.</para>

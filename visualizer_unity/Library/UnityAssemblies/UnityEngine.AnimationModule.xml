@@ -496,6 +496,7 @@
         <para>A AnimationClipPlayable linked to the PlayableGraph.</para>
       </returns>
     </member>
+<<<<<<< HEAD
     <member name="M:UnityEngine.Animations.AnimationClipPlayable.GetAnimationClip">
       <summary>
         <para>Returns the AnimationClip stored in the AnimationClipPlayable.</para>
@@ -512,11 +513,14 @@
       </summary>
       <param name="value">The new value of the ApplyFootIK flag.</param>
     </member>
+=======
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="T:UnityEngine.Animations.AnimationLayerMixerPlayable">
       <summary>
         <para>An implementation of IPlayable that controls an animation layer mixer.</para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="M:UnityEngine.Animations.AnimationLayerMixerPlayable.Create(UnityEngine.Playables.PlayableGraph,System.Int32)">
       <summary>
         <para>Creates an AnimationLayerMixerPlayable in the PlayableGraph.</para>
@@ -534,6 +538,16 @@
       <param name="layerIndex">The layer index.</param>
       <returns>
         <para>True if the layer is additive, false otherwise.</para>
+=======
+    <member name="M:UnityEngine.Animations.AnimationLayerMixerPlayable.Create">
+      <summary>
+        <para>Creates an AnimationLayerMixerPlayable in the PlayableGraph.</para>
+      </summary>
+      <param name="graph">The PlayableGraph object that will own the AnimationLayerMixerPlayable.</param>
+      <param name="inputCount">The number of layers.</param>
+      <returns>
+        <para>A AnimationLayerMixerPlayable linked to the PlayableGraph.</para>
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
       </returns>
     </member>
     <member name="P:UnityEngine.Animations.AnimationLayerMixerPlayable.Null">
@@ -541,6 +555,7 @@
         <para>Returns an invalid AnimationLayerMixerPlayable.</para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="M:UnityEngine.Animations.AnimationLayerMixerPlayable.SetLayerAdditive(System.UInt32,System.Boolean)">
       <summary>
         <para>Specifies whether a layer is additive or not. Additive layers blend with previous layers.</para>
@@ -555,11 +570,14 @@
       <param name="layerIndex">The layer index.</param>
       <param name="mask">The AvatarMask used to create the new LayerMask.</param>
     </member>
+=======
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="T:UnityEngine.Animations.AnimationMixerPlayable">
       <summary>
         <para>An implementation of IPlayable that controls an animation mixer.</para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="M:UnityEngine.Animations.AnimationMixerPlayable.Create(UnityEngine.Playables.PlayableGraph,System.Int32,System.Boolean)">
       <summary>
         <para>Creates an AnimationMixerPlayable in the PlayableGraph.</para>
@@ -569,10 +587,22 @@
       <param name="normalizeWeights">True to force a weight normalization of the inputs.</param>
       <returns>
         <para>A new AnimationMixerPlayable linked to the PlayableGraph.</para>
+=======
+    <member name="M:UnityEngine.Animations.AnimationMixerPlayable.Create">
+      <summary>
+        <para>Creates an AnimationMixerPlayable in the PlayableGraph.</para>
+      </summary>
+      <param name="graph">The PlayableGraph object that will own the AnimationMixerPlayable.</param>
+      <param name="inputCount">The number of inputs that the mixer will update.</param>
+      <param name="normalizeWeights">Set to true if you want the system to force a weight normalization of the inputs. If true, the sum of all the inputs weights will always be 1.0.</param>
+      <returns>
+        <para>A AnimationMixerPlayable linked to the PlayableGraph.</para>
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
       </returns>
     </member>
     <member name="T:UnityEngine.Animations.AnimationPlayableOutput">
       <summary>
+<<<<<<< HEAD
         <para>A IPlayableOutput implementation that connects the PlayableGraph to an Animator in the scene.</para>
       </summary>
     </member>
@@ -601,6 +631,22 @@
       </summary>
       <param name="value">The targeted Animator.</param>
     </member>
+=======
+        <para>A IPlayableOutput implementation that will be used by an animator object.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.Animations.AnimationPlayableOutput.Create">
+      <summary>
+        <para>Creates an AnimationPlayableOutput in the PlayableGraph.</para>
+      </summary>
+      <param name="graph">The PlayableGraph object that will own the AnimationPlayableOutput.</param>
+      <param name="name">The name of output.</param>
+      <param name="target">The target that will Play the AnimationPlayableOutput source Playable.</param>
+      <returns>
+        <para>A AnimationPlayableOutput.</para>
+      </returns>
+    </member>
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="T:UnityEngine.Animations.AnimatorControllerPlayable">
       <summary>
         <para>An implementation of IPlayable that controls an animation RuntimeAnimatorController.</para>
@@ -921,6 +967,7 @@
         <para>Apply the default Root Motion.</para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="M:UnityEngine.Animator.CrossFade(System.String,System.Single,System.Int32,System.Single,System.Single)">
       <summary>
         <para>Creates a crossfade from the current state to any other state using normalized times.</para>
@@ -964,6 +1011,47 @@
       <param name="layer">The layer where the crossfade occurs.</param>
       <param name="fixedTimeOffset">The time of the state (in seconds).</param>
       <param name="normalizedTransitionTime">The time of the transition (normalized).</param>
+=======
+    <member name="M:UnityEngine.Animator.CrossFade(System.String,System.Single,System.Int32,System.Single)">
+      <summary>
+        <para>See IAnimatorControllerPlayable.CrossFade.</para>
+      </summary>
+      <param name="stateName"></param>
+      <param name="transitionDuration"></param>
+      <param name="layer"></param>
+      <param name="normalizedTime"></param>
+      <param name="stateNameHash"></param>
+    </member>
+    <member name="M:UnityEngine.Animator.CrossFade(System.Int32,System.Single,System.Int32,System.Single)">
+      <summary>
+        <para>See IAnimatorControllerPlayable.CrossFade.</para>
+      </summary>
+      <param name="stateName"></param>
+      <param name="transitionDuration"></param>
+      <param name="layer"></param>
+      <param name="normalizedTime"></param>
+      <param name="stateNameHash"></param>
+    </member>
+    <member name="M:UnityEngine.Animator.CrossFadeInFixedTime(System.String,System.Single,System.Int32,System.Single)">
+      <summary>
+        <para>See IAnimatorControllerPlayable.CrossFadeInFixedTime.</para>
+      </summary>
+      <param name="stateName"></param>
+      <param name="transitionDuration"></param>
+      <param name="layer"></param>
+      <param name="fixedTime"></param>
+      <param name="stateNameHash"></param>
+    </member>
+    <member name="M:UnityEngine.Animator.CrossFadeInFixedTime(System.Int32,System.Single,System.Int32,System.Single)">
+      <summary>
+        <para>See IAnimatorControllerPlayable.CrossFadeInFixedTime.</para>
+      </summary>
+      <param name="stateName"></param>
+      <param name="transitionDuration"></param>
+      <param name="layer"></param>
+      <param name="fixedTime"></param>
+      <param name="stateNameHash"></param>
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     </member>
     <member name="M:UnityEngine.Animator.GetAnimatorTransitionInfo(System.Int32)">
       <summary>
@@ -1801,6 +1889,7 @@
         <para>Returns true if the transition is from an AnyState node, or from Animator.CrossFade().</para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="P:UnityEngine.AnimatorTransitionInfo.duration">
       <summary>
         <para>Duration of the transition.</para>
@@ -1811,6 +1900,8 @@
         <para>The unit of the transition duration.</para>
       </summary>
     </member>
+=======
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="P:UnityEngine.AnimatorTransitionInfo.fullPathHash">
       <summary>
         <para>The unique name of the Transition.</para>
@@ -2146,6 +2237,7 @@
         <para>The root, the position of the game object.</para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="T:UnityEngine.DurationUnit">
       <summary>
         <para>Describe the unit of a duration.</para>
@@ -2161,6 +2253,8 @@
         <para>A normalized duration is a duration expressed in percentage.</para>
       </summary>
     </member>
+=======
+>>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="T:UnityEngine.HumanBodyBones">
       <summary>
         <para>Human Body Bones.</para>
