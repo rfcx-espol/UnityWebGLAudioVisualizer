@@ -7,6 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
+using System.Text;
 
 public class SpectrumVis : MonoBehaviour {
 	public GameObject[] cubes;
@@ -25,72 +27,136 @@ public class SpectrumVis : MonoBehaviour {
 
 	public float colorPower = 12;
 
-	void Start(){
+    public BrowserCommunication comm;
+    public Text debugText;
+    public float updateTime;
+
+    public float normalize_value;
+
+    bool is_running;
+
+    public void do_start()
+    {
+        is_running = true;
+    }
+
+    void Start(){
 		currentRed = barColor.r;
 		currentGreen = barColor.g;
 		currentBlue = barColor.b;
 	}
 
 	void Update () {
-		float[] spects = AudioListener.GetSpectrumData (1024, 0, FFTWindow.Rectangular);
 
-	
-		for (int i = 0; i < cubes.Length; i++) {
+        if (!is_running) return;
+        //float[] spects = AudioListener.GetSpectrumData (1024, 0, FFTWindow.Rectangular);
 
-			// Save the old size
-			Vector3 previousScale = cubes [i].transform.localScale;
+        float[] spects;
 
-			// The new size
-			if (stretchAxis == axisStrech.dx){
-				previousScale.x = spects [i] * sizePower;
-			}
+        if (_update_timer <= 0)
+        {
+            spects = comm.GetFrequency();
+            normalize_value = max_from_vector(spects);
+            
+            _update_timer = updateTime;
+            //StringBuilder str = new StringBuilder();
 
-			if (stretchAxis == axisStrech.dy){
-				previousScale.y = spects [i] * sizePower;
-			}
+            //str.Append(normalize_value);
 
-			if (stretchAxis == axisStrech.dz){
-				previousScale.z = spects [i] * sizePower;
-			}
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    str.Append(spects[i] + "\n");
+            //}
 
-			if (stretchAxis == axisStrech.dyAndDz){
-				previousScale.y = spects [i] * sizePower;
-				previousScale.z = spects [i] * sizePower;
-			}
+            //debugText.text = str.ToString();
 
-			if (stretchAxis == axisStrech.all){
-				previousScale.x = spects [i] * sizePower;
-				previousScale.y = spects [i] * sizePower;
-				previousScale.z = spects [i] * sizePower;
-			}
+            for (int i = 0; i < cubes.Length; i++)
+            {
 
-			// Reset size
-			cubes [i].transform.localScale = previousScale;
+                // Save the old size
+                Vector3 previousScale = cubes[i].transform.localScale;
+                spects[i] /= normalize_value;
+                // The new size
+                if (stretchAxis == axisStrech.dx)
+                {
+                    previousScale.x = spects[i] * sizePower;
+                }
 
-			//if (i == 0) {
-			//	Debug.Log (spects [i]);
-			//}
+                if (stretchAxis == axisStrech.dy)
+                {
+                    previousScale.y = spects[i] * -sizePower;
+                }
 
-			// Colour change
-			if (currentChannel == channelColour.red) {
-				barColor.r =  currentRed + spects [i] * colorPower;
-			}
+                if (stretchAxis == axisStrech.dz)
+                {
+                    previousScale.z = spects[i] * sizePower;
+                }
 
-			if (currentChannel == channelColour.green) {
-				barColor.g = currentGreen + spects [i] * colorPower;
-			}
+                if (stretchAxis == axisStrech.dyAndDz)
+                {
+                    previousScale.y = spects[i] * sizePower;
+                    previousScale.z = spects[i] * sizePower;
+                }
 
-			if (currentChannel == channelColour.blue) {
-				barColor.b = currentBlue + spects [i] * colorPower;
-			}
+                if (stretchAxis == axisStrech.all)
+                {
+                    previousScale.x = spects[i] * sizePower;
+                    previousScale.y = spects[i] * sizePower;
+                    previousScale.z = spects[i] * sizePower;
+                }
 
-			if (currentChannel == channelColour.all) {
-				barColor.b = currentBlue + (spects [i] * colorPower);
-				barColor.g = currentGreen + (spects [i] * colorPower);
-				barColor.r = currentRed + (spects [i] * colorPower);
-			}
+                // Reset size
+                cubes[i].transform.localScale = previousScale;
 
-			cubes [i].GetComponent<Renderer>().material.color = barColor;
-		}
+                //if (i == 0) {
+                //	Debug.Log (spects [i]);
+                //}
+
+                // Colour change
+                if (currentChannel == channelColour.red)
+                {
+                    barColor.r = currentRed + spects[i] * colorPower;
+                }
+
+                if (currentChannel == channelColour.green)
+                {
+                    barColor.g = currentGreen + spects[i] * colorPower;
+                }
+
+                if (currentChannel == channelColour.blue)
+                {
+                    barColor.b = currentBlue + spects[i] * colorPower;
+                }
+
+                if (currentChannel == channelColour.all)
+                {
+                    barColor.b = currentBlue + (spects[i] * colorPower);
+                    barColor.g = currentGreen + (spects[i] * colorPower);
+                    barColor.r = currentRed + (spects[i] * colorPower);
+                }
+
+                cubes[i].GetComponentInChildren<Renderer>().material.color = barColor;
+            }
+        }
+        else
+        {
+            _update_timer -= Time.deltaTime;
+        }
+
+        
 	}
+
+    static float max_from_vector(float[] vec)
+    {
+        float max = 0;
+
+        for (int i = 0; i < vec.Length; i++)
+        {
+            max = Mathf.Max(Mathf.Abs(vec[i]), max);
+        }
+
+        return max;
+    }
+
+    float _update_timer;
 }

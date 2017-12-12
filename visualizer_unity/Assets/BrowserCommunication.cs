@@ -5,7 +5,8 @@ using System.Runtime.InteropServices;
 
 public class BrowserCommunication : MonoBehaviour {
 
-    float[] myArray;
+    float[] myArraySamples;
+    float[] myArrayFrequency;
 
     [DllImport("__Internal")]
     private static extern void Initialize();
@@ -15,6 +16,8 @@ public class BrowserCommunication : MonoBehaviour {
 
     [DllImport("__Internal")]
     private static extern void PrintFloatArray(float[] array, int size);
+    [DllImport("__Internal")]
+    private static extern void PrintFloatArrayFreq(float[] array, int size);
 
     //[DllImport("__Internal")]
     //private static extern int AddNumbers(int x, int y);
@@ -29,7 +32,8 @@ public class BrowserCommunication : MonoBehaviour {
     {
         
 
-        myArray = new float[1024];
+        myArraySamples = new float[1024];
+        myArrayFrequency = new float[1024];
 
         //InitPedro(myArray, myArray.Length);
         Initialize();
@@ -57,7 +61,13 @@ public class BrowserCommunication : MonoBehaviour {
 
     public float[] GetSamples()
     {
-        PrintFloatArray(myArray, myArray.Length);
-        return myArray;
+        PrintFloatArray(myArraySamples, myArraySamples.Length);
+        return myArraySamples;
+    }
+
+    public float[] GetFrequency()
+    {
+        PrintFloatArrayFreq(myArrayFrequency, myArrayFrequency.Length);
+        return myArrayFrequency;
     }
 }

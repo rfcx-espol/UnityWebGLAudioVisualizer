@@ -2620,11 +2620,7 @@ Transitions with exit times greater than one will be evaluated only once, so the
     </member>
     <member name="M:UnityEditor.AssetDatabase.GetSubFolders(System.String)">
       <summary>
-<<<<<<< HEAD
-        <para>Given a path to a directory in the Assets folder, relative to the project folder, this method will return an array of all its subdirectories.</para>
-=======
         <para>Given an absolute path to a directory, this method will return an array of all it's subdirectories.</para>
->>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
       </summary>
       <param name="path"></param>
     </member>
@@ -18158,44 +18154,6 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
         <para>A light status bar, intended for use on dark backgrounds.</para>
       </summary>
     </member>
-<<<<<<< HEAD
-    <member name="T:UnityEditor.iOSSystemGestureDeferMode">
-      <summary>
-        <para>Bit-mask used to control the deferring of system gestures on iOS.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.iOSSystemGestureDeferMode.All">
-      <summary>
-        <para>Identifies all screen edges.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.iOSSystemGestureDeferMode.BottomEdge">
-      <summary>
-        <para>Identifies bottom screen edge.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.iOSSystemGestureDeferMode.LeftEdge">
-      <summary>
-        <para>Identifies left screen edge.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.iOSSystemGestureDeferMode.None">
-      <summary>
-        <para>Disables gesture deferring on all edges.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.iOSSystemGestureDeferMode.RightEdge">
-      <summary>
-        <para>Identifies right screen edge.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.iOSSystemGestureDeferMode.TopEdge">
-      <summary>
-        <para>Identifies top screen edge.</para>
-      </summary>
-    </member>
-=======
->>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="T:UnityEditor.iOSTargetDevice">
       <summary>
         <para>Target iOS device.</para>
@@ -22151,14 +22109,6 @@ See Also: PhysicsVisualizationSettings.</para>
         <para>Describes the reason for access to the user's camera.</para>
       </summary>
     </member>
-<<<<<<< HEAD
-    <member name="P:UnityEditor.PlayerSettings.iOS.deferSystemGesturesMode">
-      <summary>
-        <para>Defer system gestures until the second swipe on specific edges.</para>
-      </summary>
-    </member>
-=======
->>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="P:UnityEditor.PlayerSettings.iOS.exitOnSuspend">
       <summary>
         <para>Application should exit when suspended to background.</para>
@@ -22169,14 +22119,6 @@ See Also: PhysicsVisualizationSettings.</para>
         <para>Should hard shadows be enforced when running on (mobile) Metal.</para>
       </summary>
     </member>
-<<<<<<< HEAD
-    <member name="P:UnityEditor.PlayerSettings.iOS.hideHomeButton">
-      <summary>
-        <para>Specifies whether the home button should be hidden in the iOS build of this application.</para>
-      </summary>
-    </member>
-=======
->>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
     <member name="P:UnityEditor.PlayerSettings.iOS.iOSManualProvisioningProfileID">
       <summary>
         <para>A provisioning profile Universally Unique Identifier (UUID) that Xcode will use to build your iOS app in Manual Signing mode.</para>

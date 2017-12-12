@@ -709,11 +709,7 @@ Analogous to the version parameter for WWW.LoadFromCacheOrDownload.</param>
         <para>Create a UnityWebRequest configured to send form data to a server via HTTP POST.</para>
       </summary>
       <param name="uri">The target URI to which form data will be transmitted.</param>
-<<<<<<< HEAD
-      <param name="postData">Form body data. Will be URLEncoded prior to transmission.</param>
-=======
       <param name="postData">Form body data. Will be URLEncoded via WWWTranscoder.URLEncode prior to transmission.</param>
->>>>>>> 095aa8b61f1a58eac33757d3f47fdcc3330db06e
       <returns>
         <para>A UnityWebRequest configured to send form data to uri via POST.</para>
       </returns>

@@ -4,7 +4,8 @@
  * License: MIT
  * Feb 15, 2014
  */
-var pedro;
+var sample_pedro;
+var frequency_pedro;
 window.onload = function() {
     new Visualizer().ini();
 };
@@ -210,7 +211,10 @@ Visualizer.prototype = {
 			analyser.fftSize = 1024;
 			var dataArray = new Float32Array(analyser.fftSize);
 			analyser.getFloatTimeDomainData(dataArray);
-			pedro = dataArray;
+			sample_pedro = dataArray;
+			var frequencyArray = new Float32Array(analyser.frequencyBinCount);
+			analyser.getFloatFrequencyData(frequencyArray);
+			frequency_pedro = frequencyArray;
         }
         this.animationId = requestAnimationFrame(drawMeter);
     },
