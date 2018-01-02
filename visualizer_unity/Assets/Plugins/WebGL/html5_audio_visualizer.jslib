@@ -11,6 +11,9 @@ var csharp = {
 		for(var i=0;i<size;i++){
 			HEAPF32[(array>>2)+i] = frequency_pedro[i];
 		}
+	},
+	SendAudioPath: function (str) {
+		window.alert(Pointer_stringify(str));
 	}
 }
 
