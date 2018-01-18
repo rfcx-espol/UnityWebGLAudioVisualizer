@@ -1,8 +1,8 @@
 
-var time_pedro;
+var sample_pedro;
 var frequency_pedro;
 var radio_station = 0;
-var server_address = "http://192.168.100.100:8000/station";
+var server_address = "http://10.10.1.108:8000/station";
 var extention = ".ogg";
 
 //var audio = document.createElement('audio');
@@ -19,13 +19,13 @@ source.connect(analyser);
 analyser.connect(audioCtx.destination);
 analyser.fftSize = 2048;
 var bufferLength = analyser.frequencyBinCount;
-time_pedro = new Float32Array(bufferLength);
+sample_pedro = new Float32Array(bufferLength);
 frequency_pedro = new Float32Array(bufferLength);
 
  setInterval(function(){ 
 
 
-	analyser.getFloatTimeDomainData(time_pedro);
+	analyser.getFloatTimeDomainData(sample_pedro);
 	analyser.getFloatFrequencyData(frequency_pedro);
 
 
@@ -39,4 +39,8 @@ function set_station(station) {
 	audio.setAttribute("src", new_address);
 	audio.setAttribute("crossorigin", "anonymous");
 	audio.play();
+}
+
+function stop_station(){
+	audio.pause();
 }

@@ -18,6 +18,9 @@ public class BrowserCommunication : MonoBehaviour {
     [DllImport("__Internal")]
     private static extern void SelectStation(int x);
 
+    [DllImport("__Internal")]
+    private static extern void StopStation();
+
     void Start()
     {
         myArraySamples = new float[1024];
@@ -38,5 +41,10 @@ public class BrowserCommunication : MonoBehaviour {
 
     public void select_station(int s) {
         SelectStation(s);
+    }
+
+    public void stop_current_station()
+    {
+        StopStation();
     }
 }

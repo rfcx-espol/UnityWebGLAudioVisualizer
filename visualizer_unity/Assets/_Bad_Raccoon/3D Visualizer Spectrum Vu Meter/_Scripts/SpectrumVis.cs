@@ -135,7 +135,7 @@ public class SpectrumVis : MonoBehaviour {
                     barColor.r = currentRed + (spects[i] * colorPower);
                 }
 
-                cubes[i].GetComponentInChildren<Renderer>().material.color = barColor;
+                cubes[i].GetComponent<Image>().color = barColor;
             }
         }
         else

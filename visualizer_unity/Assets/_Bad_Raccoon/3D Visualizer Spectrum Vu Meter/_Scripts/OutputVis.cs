@@ -129,7 +129,7 @@ public class OutputVis : MonoBehaviour {
                     barColor.r = currentRed + (spects[i] * colorPower);
                 }
 
-                cubes[i].GetComponent<Renderer>().material.color = barColor;
+                cubes[i].GetComponent<Image>().color = barColor;
             }
         }
         else

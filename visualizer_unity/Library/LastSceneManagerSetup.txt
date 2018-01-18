@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Handpainted Forest Environment Free Sample/Scenes/demoScene_free.unity
-=======
-- path: Assets/radio mutex.unity
->>>>>>> 9b056b7fc463c7cca71c7f651b8b129b3a06826e
   isLoaded: 1
   isActive: 1

@@ -4,36 +4,40 @@ using UnityEngine;
 
 public class ForestInput : MonoBehaviour {
 
-    public SpectrumVis spectrum;
-    public OutputVis data;
+    public CanvasGroup waveCanvas;
+    public BrowserCommunication comm;
     
 
     public bool IsActive{ get { return active; } }
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        w_controller = waveCanvas.GetComponent<WavesController>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetButtonDown("Cancel"))
             DisableWaves();
+        if (Input.GetKeyDown(KeyCode.Tab))
+            w_controller.Enlarge();
 	}
 
     void DisableWaves()
     {
+        comm.stop_current_station();
         active = false;
-        spectrum.gameObject.SetActive(false);
-        data.gameObject.SetActive(false);
+        waveCanvas.alpha = 0;
     }
 
-    public void EnableWaves()
+    public void EnableVisualizer(int station)
     {
+        Debug.Log("ENABLED");
+        w_controller.setSourceName("Station " + station);
         active = true;
-        spectrum.gameObject.SetActive(true);
-        data.gameObject.SetActive(true);
+        waveCanvas.alpha = 1;
     }
 
     bool active;
+    WavesController w_controller;
 }

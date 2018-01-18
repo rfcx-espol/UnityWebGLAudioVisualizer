@@ -6,15 +6,16 @@ using System.Runtime.InteropServices;
 public class ClickToShowSoundstream : MonoBehaviour {
 
     public ForestInput forest;
-    public string pathToAudio;
+    public RadioMutex mutex;
 
-    [DllImport("__Internal")]
-    private static extern void SendAudioPath(string str);
+   
 
     // Use this for initialization
     void Start () {
         timer = 0;
-	}
+        w_controller = forest.waveCanvas.GetComponent<WavesController>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,9 +25,7 @@ public class ClickToShowSoundstream : MonoBehaviour {
             if (timer >= wait_for_load && loading)
             {
                 loading = false;
-                forest.EnableWaves();
-                forest.spectrum.do_start();
-                forest.data.do_start();
+                w_controller.doStart();
             }
         }
 	}
@@ -35,13 +34,15 @@ public class ClickToShowSoundstream : MonoBehaviour {
     {
         if (!forest.IsActive)
         {
-            SendAudioPath(pathToAudio);
+            forest.EnableVisualizer(mutex.station);
             loading = true;
-            timer = 0;          
+            timer = 0;
+            mutex.do_set_station();          
         }
     }
 
     float timer;
     bool loading;
     float wait_for_load = 3.0f;
+    WavesController w_controller;
 }
