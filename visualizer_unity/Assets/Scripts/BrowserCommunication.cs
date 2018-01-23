@@ -39,8 +39,16 @@ public class BrowserCommunication : MonoBehaviour {
         return myArrayFrequency;
     }
 
-    public void select_station(int s) {
-        SelectStation(s);
+    public void select_station(int s)  {
+        try
+        {
+            SelectStation(s);
+        }
+        catch (System.Exception e)
+        {
+            throw new System.Exception();
+        }
+        
     }
 
     public void stop_current_station()

@@ -8,7 +8,15 @@ public class RadioMutex : MonoBehaviour {
     public int station;
 
     public void do_set_station() {
-        comm.select_station(station);
+        try
+        {
+            comm.select_station(station);
+        }
+        catch(System.Exception e)
+        {
+            throw new System.Exception();
+        }
+        
     }
 
 }

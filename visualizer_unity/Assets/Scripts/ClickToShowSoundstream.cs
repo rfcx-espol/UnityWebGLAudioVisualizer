@@ -40,12 +40,20 @@ public class ClickToShowSoundstream : MonoBehaviour {
     {
         if (!forest.IsActive)
         {
-            for (int i = 0; i < feedback.Length; i++)
-                feedback[i].material.color = Color.green;
-            forest.EnableVisualizer(mutex.station);
-            loading = true;
-            timer = 0;
-            mutex.do_set_station();          
+            try
+            {
+                mutex.do_set_station();
+                for (int i = 0; i < feedback.Length; i++)
+                    feedback[i].material.color = Color.green;
+                forest.EnableVisualizer(mutex.station);
+                loading = true;
+                timer = 0;
+            }
+            catch(System.Exception e)
+            {
+                Debug.LogError("No se pudo conectar al servidor.");
+            }
+                            
         }
     }
 
