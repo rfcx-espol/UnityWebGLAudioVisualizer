@@ -8,6 +8,7 @@ public class ClickToShowSoundstream : MonoBehaviour {
     public ForestInput forest;
     public RadioMutex mutex;
     public MeshRenderer[] feedback;
+    public TextMesh channelText;
 
    
 
@@ -15,7 +16,7 @@ public class ClickToShowSoundstream : MonoBehaviour {
     void Start () {
         timer = 0;
         w_controller = forest.waveCanvas.GetComponent<WavesController>();
-
+        channelText.text = mutex.station.ToString();
     }
 	
 	// Update is called once per frame

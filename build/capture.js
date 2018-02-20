@@ -2,7 +2,7 @@
 var sample_pedro;
 var frequency_pedro;
 var radio_station = 0;
-var server_address = "http://200.126.1.156:8000/station";
+var server_address = "http://200.126.14.250:8000/station";
 var extention = ".ogg";
 
 //var audio = document.createElement('audio');
