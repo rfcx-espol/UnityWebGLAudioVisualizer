@@ -22,7 +22,11 @@ var bufferLength = analyser.frequencyBinCount;
 sample_pedro = new Float32Array(bufferLength);
 frequency_pedro = new Float32Array(bufferLength);
 
- setInterval(function(){ 
+window.addEventListener('error', function(e) {
+    gameInstance.sendMessage("ForestInput", "DisableWaves");
+}, true);
+
+setInterval(function(){ 
 
 
 	analyser.getFloatTimeDomainData(sample_pedro);

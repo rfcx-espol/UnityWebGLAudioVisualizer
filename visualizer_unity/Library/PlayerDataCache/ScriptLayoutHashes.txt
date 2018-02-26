@@ -185,3 +185,7 @@ b3432dfe180f02232d7612fb366593d3 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 eeae86a0eb387fb1e06b8d7924873b82 Assembly-CSharp.dll:.SpectrumVis
 3ae0dad0b55a80319e1d57c2dce28da7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Tonemapping
 563daf171b5d1c7c75b1108951401223 Assembly-UnityScript.dll:.CharacterMotor
+4c6707be9f3bf5a575854c54c34ea8a9 Assembly-CSharp.dll:.miniCameraScript
+bf4a68bd55a3b7f40db2556b31f9c84f Assembly-CSharp.dll:.GUIManager
+2e552b005eca954330c3a1869e4aad92 Assembly-CSharp.dll:.FollowCharacter
+7aaf81fcf488698a1504907c20b1694f Assembly-CSharp.dll:.Player
